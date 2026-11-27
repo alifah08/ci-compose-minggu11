@@ -29,3 +29,9 @@ Pemeriksaan berjalan otomatis setiap ada push ke branch `main` dan setiap ada Pu
 ![PR merah](bukti/2-pr-merah.png)
 
 Tautan Pull Request: https://github.com/alifah08/ci-compose-minggu11/pull/1
+
+### 3. Bonus: up, ps, dan down di CI
+
+![Bonus](bukti/3-bonus.png)
+
+Workflow menjalankan `docker compose up -d`, `docker compose ps`, dan `docker compose down -v` langsung di GitHub Actions.
