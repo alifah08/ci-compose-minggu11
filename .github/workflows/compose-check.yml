@@ -12,8 +12,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Salin file environment
+      - name: Siapkan env dari contoh
         run: cp .env.example .env
 
-      - name: Validasi konfigurasi Docker Compose
+      - name: Validasi file compose
         run: docker compose config -q
+
+      - name: Jalankan stack
+        run: docker compose up -d
+
+      - name: Cek status container
+        run: |
+          sleep 15
+          docker compose ps
+
+      - name: Matikan stack
+        if: always()
+        run: docker compose down -v
