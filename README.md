@@ -1,47 +1,31 @@
-# WordPress + MariaDB dengan Docker Compose
+# Tugas Minggu 11: CI untuk Repo Compose
 
-Proyek ini menjalankan WordPress dan MariaDB menggunakan Docker Compose serta memeriksa konfigurasi secara otomatis melalui GitHub Actions.
+![CI](https://github.com/alifah08/ci-compose-minggu11/actions/workflows/compose-check.yml/badge.svg)
 
-## Persiapan
+**Nama:** Alifah Windy Khairiya
+**NIM:** 202557201004
+**Mata Kuliah:** Teknologi Open Source
 
-1. Salin `.env.example` menjadi `.env`.
-2. Ganti nilai password pada file `.env`.
-3. Jalankan aplikasi:
+## Deskripsi
 
-   ```bash
-   docker compose up -d
-   ```
+Proyek ini menggunakan GitHub Actions untuk memvalidasi konfigurasi Docker Compose WordPress dan MariaDB.
+Pemeriksaan berjalan otomatis setiap ada push ke branch `main` dan setiap ada Pull Request.
 
-4. Buka WordPress melalui `http://localhost:8080`.
-5. Periksa container:
+## Isi Repositori
 
-   ```bash
-   docker compose ps
-   ```
+- `docker-compose.yml`: konfigurasi WordPress dan MariaDB
+- `.env.example`: contoh variabel lingkungan
+- `.github/workflows/compose-check.yml`: workflow validasi Compose
+- `bukti/`: screenshot bukti CI
 
-6. Hentikan aplikasi:
+## Bukti
 
-   ```bash
-   docker compose down
-   ```
+### 1. Run berhasil (hijau)
 
-## CI dengan GitHub Actions
+![Run hijau](bukti/1-run-hijau.png)
 
-Workflow berada di `.github/workflows/compose-check.yml`. Workflow berjalan saat ada push ke branch `main` atau Pull Request.
+### 2. Pull Request gagal (merah)
 
-Job `validate` melakukan tiga hal:
-- Mengambil kode repository.
-- Menyalin `.env.example` menjadi `.env`.
-- Menjalankan `docker compose config -q` untuk memvalidasi konfigurasi tanpa menjalankan container.
+![PR merah](bukti/2-pr-merah.png)
 
-## Badge Status
-
-Ganti `USERNAME` dan `NAMA_REPO` dengan akun dan nama repository GitHub milikmu, lalu tambahkan ke README:
-
-```markdown
-![Compose Check](https://github.com/USERNAME/NAMA_REPO/actions/workflows/compose-check.yml/badge.svg)
-```
-
-## Keamanan
-
-Jangan pernah mengunggah file `.env` asli ke GitHub. Yang boleh diunggah adalah `.env.example` tanpa password pribadi.
+Tautan Pull Request: https://github.com/alifah08/ci-compose-minggu11/pull/1
